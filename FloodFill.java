@@ -13,7 +13,7 @@ public class FloodFill {
         int corAlvo = imagem.getRGB(x, y);  // Cor que será substituída
         int novaRGB = novaCor.getRGB();
 
-        if (corAlvo == novaRGB) return;  // Já está na cor desejada
+        if (corAlvo == novaRGB) return;  
 
         // Usando pilha
         Pilha pilha = new Pilha();

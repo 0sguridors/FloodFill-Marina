@@ -15,7 +15,7 @@ public class FloodFillApp extends JPanel {
         this.floodFill = new FloodFill(imagem);
         this.usarPilha = usarPilha;
 
-        // Adiciona um listener para capturar cliques do mouse
+        // Capturar cliques do mouse
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -24,11 +24,11 @@ public class FloodFillApp extends JPanel {
 
                 System.out.println("Clique detectado em: (" + x + ", " + y + ")");
                 if (usarPilha) {
-                    floodFill.floodFillPilha(x, y, Color.red);  // Aplicar o Flood Fill com a cor vermelha
+                    floodFill.floodFillPilha(x, y, Color.red); 
                 } else {
-                    floodFill.floodFillFila(x, y, Color.blue);  // Aplicar o Flood Fill com a cor azul
+                    floodFill.floodFillFila(x, y, Color.blue);  
                 }
-                repaint();  // Atualiza a tela para refletir as mudanças
+                repaint(); 
             }
         });
     }
