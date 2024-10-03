@@ -8,23 +8,21 @@ import javax.imageio.ImageIO;
 
 public class FloodFillApp extends JPanel {
     private BufferedImage imagem;
-    private BufferedImage imagemOriginal;  // Para armazenar a imagem original
+    private BufferedImage imagemOriginal; 
     private FloodFill floodFill;
     private boolean usandoFila = true;
     private JButton toggleButton;
-    private JButton resetButton;  // Botão para reiniciar a imagem
+    private JButton resetButton; 
 
     public FloodFillApp(BufferedImage imagem) {
-        this.imagemOriginal = imagem;  // Armazena a imagem original
+        this.imagemOriginal = imagem;  
         this.imagem = new BufferedImage(imagem.getWidth(), imagem.getHeight(), imagem.getType());
-        this.imagem.getGraphics().drawImage(imagem, 0, 0, null);  // Copia a imagem original
+        this.imagem.getGraphics().drawImage(imagem, 0, 0, null);  
         this.floodFill = new FloodFill(this.imagem);
-        
-        // Botão para alternar entre fila e pilha
+      
         toggleButton = new JButton("Usar Pilha");
         toggleButton.addActionListener(e -> toggleFloodFillMethod());
         
-        // Botão para reiniciar a imagem
         resetButton = new JButton("Reiniciar Imagem");
         resetButton.addActionListener(e -> resetImage());
 
@@ -32,7 +30,7 @@ public class FloodFillApp extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(toggleButton);
         buttonPanel.add(resetButton);
-        this.add(buttonPanel, BorderLayout.NORTH); // Adiciona painel de botões na parte superior
+        this.add(buttonPanel, BorderLayout.NORTH); 
         
         addMouseListener(new MouseAdapter() {
             @Override
@@ -42,9 +40,9 @@ public class FloodFillApp extends JPanel {
                 System.out.println("Clique detectado em: (" + x + ", " + y + ")");
                 
                 if (usandoFila) {
-                    floodFill.floodFillFila(x, y, Color.RED);  // Usando fila
+                    floodFill.floodFillFila(x, y, Color.RED);  
                 } else {
-                    floodFill.floodFillPilha(x, y, Color.blue); // Usando pilha
+                    floodFill.floodFillPilha(x, y, Color.blue); 
                 }
                 repaint();
             }
@@ -52,17 +50,17 @@ public class FloodFillApp extends JPanel {
     }
 
     private void toggleFloodFillMethod() {
-        usandoFila = !usandoFila;  // Alterna o estado
+        usandoFila = !usandoFila;  
         toggleButton.setText(usandoFila ? "Usar Pilha" : "Usar Fila");
-        floodFill = new FloodFill(imagem);  // Reinicia o FloodFill
+        floodFill = new FloodFill(imagem); 
         repaint();
     }
 
     private void resetImage() {
         imagem = new BufferedImage(imagemOriginal.getWidth(), imagemOriginal.getHeight(), imagemOriginal.getType());
-        imagem.getGraphics().drawImage(imagemOriginal, 0, 0, null);  // Reinicia a imagem com a original
-        floodFill = new FloodFill(imagem);  // Reinicia o FloodFill
-        repaint();  // Atualiza a tela
+        imagem.getGraphics().drawImage(imagemOriginal, 0, 0, null);  
+        floodFill = new FloodFill(imagem); 
+        repaint(); 
     }
 
     @Override

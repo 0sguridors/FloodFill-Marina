@@ -10,7 +10,7 @@ public class FloodFill {
     }
 
     public void floodFillPilha(int x, int y, Color novaCor) {
-        int corAlvo = imagem.getRGB(x, y);  // Cor que será substituída
+        int corAlvo = imagem.getRGB(x, y);  
         int novaRGB = novaCor.getRGB();
 
         if (corAlvo == novaRGB) return;  
@@ -29,21 +29,19 @@ public class FloodFill {
 
             imagem.setRGB(px, py, novaRGB);
 
-            // Empilha os vizinhos
-            pilha.push(px + 1, py); // Direita
-            pilha.push(px - 1, py); // Esquerda
-            pilha.push(px, py + 1); // Baixo
-            pilha.push(px, py - 1); // Cima
+            pilha.push(px + 1, py); 
+            pilha.push(px - 1, py); 
+            pilha.push(px, py + 1); 
+            pilha.push(px, py - 1); 
         }
     }
 
     public void floodFillFila(int x, int y, Color novaCor) {
-        int corAlvo = imagem.getRGB(x, y);  // Cor que será substituída
+        int corAlvo = imagem.getRGB(x, y); 
         int novaRGB = novaCor.getRGB();
 
-        if (corAlvo == novaRGB) return;  // Já está na cor desejada
+        if (corAlvo == novaRGB) return;
 
-        // Usando fila
         Fila fila = new Fila();
         fila.enqueue(x, y);
 
@@ -57,11 +55,10 @@ public class FloodFill {
 
             imagem.setRGB(px, py, novaRGB);
 
-            // Enfileira os vizinhos
-            fila.enqueue(px + 1, py); // Direita
-            fila.enqueue(px - 1, py); // Esquerda
-            fila.enqueue(px, py + 1); // Baixo
-            fila.enqueue(px, py - 1); // Cima
+            fila.enqueue(px + 1, py); 
+            fila.enqueue(px - 1, py); 
+            fila.enqueue(px, py + 1); 
+            fila.enqueue(px, py - 1); 
         }
     }
 }
